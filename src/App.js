@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import AddSchool from "./pages/AddSchool";
+import ShowSchools from "./pages/ShowSchools";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        <nav className="navbar">
+          <ul className="nav-links">
+            <li>
+              <Link to="/addSchool">Add School</Link>
+            </li>
+            <li>
+              <Link to="/showSchools">Show Schools</Link>
+            </li>
+          </ul>
+        </nav>
+        <div className="content">
+          <Routes>
+            <Route path="/addSchool" element={<AddSchool />} />
+            <Route path="/showSchools" element={<ShowSchools />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
